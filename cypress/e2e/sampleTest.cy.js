@@ -1,102 +1,242 @@
-const validUser = { username: "DDD", password: "DDD" };
-const testUser = { username: "testuser", password: "password" };
-
-describe("Task Tracker App", () => {
-  beforeEach(() => {
+describe("App Load Test", () => {
+  it("Checks if the home page loads", () => {
     cy.visit("http://127.0.0.1:8080/task-tracker.html");
+    cy.contains("Login to Task Tracker");
+  });
+});
+
+describe("Input Test", () => {
+  it("Should type username and password", () => {
+    cy.visit("http://127.0.0.1:8080/task-tracker.html");
+
+    cy.get('[data-cy="username-input"]')
+      .type("testuser")
+      .should("have.value", "testuser");
+
+    cy.get('[data-cy="password-input"]')
+      .type("DDDD")
+      .should("have.value", "DDDD");
+  });
+});
+
+describe("Login Test", () => {
+  it("Successful login", () => {
+    cy.visit("http://127.0.0.1:8080/task-tracker.html");
+
+    cy.get('[data-cy="username-input"]')
+      .type("testuser")
+      .should("have.value", "testuser");
+
+    cy.get('[data-cy="password-input"]')
+      .type("DDDD")
+      .should("have.value", "DDDD");
+
+    cy.get('[data-cy="login-button"]').click();
+
+    cy.get('[data-cy="notification"]').should("have.class", "show");
+    cy.get('[data-cy="notification-message"]').should(
+      "contain",
+      "Login successful"
+    );
+  });
+});
+
+describe("Incorrect and empty creds", () => {
+  it("Checks Empty Username", () => {
+    cy.visit("http://127.0.0.1:8080/task-tracker.html");
+    cy.get('[data-cy="login-button"]').click();
+    cy.get('[data-cy="notification"]').should("not.have.class", "show");
   });
 
-  describe("App Load Test", () => {
-    it("Displays login title", () => {
-      cy.contains("Login to Task Tracker").should("be.visible");
-    });
+  it("Checks Empty Password", () => {
+    cy.visit("http://127.0.0.1:8080/task-tracker.html");
+    cy.get('[data-cy="username-input"]')
+      .type("DDDD")
+      .should("have.value", "DDDD");
+    cy.get('[data-cy="login-button"]').click();
+    cy.get('[data-cy="notification"]').should("not.have.class", "show");
   });
 
-  describe("Login Form Input Tests", () => {
-    it("Should type username and password", () => {
-      cy.get('[data-cy="username-input"]').type("testuser").should("have.value", "testuser");
-      cy.get('[data-cy="password-input"]').type("DDDD").should("have.value", "DDDD");
-    });
+  it("Checks Wrong Creds", () => {
+    cy.visit("http://127.0.0.1:8080/task-tracker.html");
+    cy.get('[data-cy="username-input"]').type("DD").should("have.value", "DD");
+    cy.get('[data-cy="password-input"]').type("DD").should("have.value", "DD");
+
+    cy.get('[data-cy="login-button"]').click();
+
+    cy.get('[data-cy="username-error"]').should("be.visible");
+    cy.get('[data-cy="username-error"]').should(
+      "contain",
+      "Username must be at least 3 characters"
+    );
+
+    cy.get('[data-cy="password-error"]').should("be.visible");
+    cy.get('[data-cy="password-error"]').should(
+      "contain",
+      "Password must be at least 3 characters"
+    );
   });
+});
 
-  describe("Login Tests", () => {
-    it("Successful login shows notification", () => {
-      cy.login(testUser.username, testUser.password);
-    });
+describe("Login Test", () => {
+  it("The username fields matches after login", () => {
+    cy.visit("http://127.0.0.1:8080/task-tracker.html");
 
-    describe("Invalid Login", () => {
-      it("Empty username", () => {
-        cy.get('[data-cy="login-button"]').click();
-        cy.get('[data-cy="notification"]').should("not.have.class", "show");
-      });
+    cy.get('[data-cy="username-input"]').type("testuser");
+    cy.get('[data-cy="password-input"]').type("password");
+    cy.get('[data-cy="login-button"]').click();
 
-      it("Empty password", () => {
-        cy.get('[data-cy="username-input"]').type("DDDD").should("have.value", "DDDD");
-        cy.get('[data-cy="login-button"]').click();
-        cy.get('[data-cy="notification"]').should("not.have.class", "show");
-      });
-
-      it("Invalid credentials show errors", () => {
-        cy.get('[data-cy="username-input"]').type("DD").should("have.value", "DD");
-        cy.get('[data-cy="password-input"]').type("DD").should("have.value", "DD");
-        cy.get('[data-cy="login-button"]').click();
-
-        cy.get('[data-cy="username-error"]').should("be.visible").and("contain", "Username must be at least 3 characters");
-        cy.get('[data-cy="password-error"]').should("be.visible").and("contain", "Password must be at least 3 characters");
-      });
-    });
+    cy.get('[data-cy="username-input"]').should("have.value", "testuser");
   });
+});
 
-  describe("Task Section Tests", () => {
-    beforeEach(() => {
-      cy.login(testUser.username, testUser.password);
+describe("Task Section Visibility", () => {
+  it("Shows task section content (empty state) after login", () => {
+    cy.visit("http://127.0.0.1:8080/task-tracker.html");
+
+    // Login
+    cy.get('[data-cy="username-input"]').type("testuser");
+    cy.get('[data-cy="password-input"]').type("password");
+    cy.get('[data-cy="login-button"]').click();
+
+    cy.get('[data-cy="empty-state"]').should("exist");
+    cy.get('[data-cy="empty-state"]').should("contain", "No tasks found");
+  });
+});
+
+describe(" After a successful login, simulate adding a task and verify", () => {
+  it("Adds task ", () => {
+    cy.visit("http://127.0.0.1:8080/task-tracker.html");
+
+    cy.get('[data-cy="username-input"]').type("DDD");
+    cy.get('[data-cy="password-input"]').type("DDD");
+    cy.get('[data-cy="login-button"]').click();
+
+    cy.get('[data-cy="task-title-input"]')
+      .type("Test Task")
+      .should("have.value", "Test Task");
+    cy.get('[data-cy="task-description-input"]')
+      .type("Test")
+      .should("have.value", "Test");
+    cy.get('[data-cy="task-priority-select"]').select("Medium");
+    cy.get('[data-cy="task-due-date-input"]')
+      .type("2025-06-15")
+      .should("have.value", "2025-06-15");
+    cy.get('[data-cy="add-task-button"]').click();
+
+    cy.get('[data-cy="notification"]').should("have.class", "show");
+    cy.get('[data-cy="notification-message"]').should(
+      "contain",
+      "Task added successfully"
+    );
+    cy.get('[data-cy="task-item"]').contains("Test Task");
+  });
+});
+
+describe("Test Completed Task", () => {
+  it("should Mark a task as completed", () => {
+    cy.visit("http://127.0.0.1:8080/task-tracker.html");
+
+    cy.get('[data-cy="username-input"]').type("DDD");
+    cy.get('[data-cy="password-input"]').type("DDD");
+    cy.get('[data-cy="login-button"]').click();
+
+    cy.get('[data-cy="task-title-input"]')
+      .type("Test Task")
+      .should("have.value", "Test Task");
+    cy.get('[data-cy="task-description-input"]')
+      .type("Test")
+      .should("have.value", "Test");
+    cy.get('[data-cy="task-priority-select"]').select("Medium");
+    cy.get('[data-cy="task-due-date-input"]')
+      .type("2025-06-15")
+      .should("have.value", "2025-06-15");
+    cy.get('[data-cy="add-task-button"]').click();
+
+    cy.get('[data-cy="toggle-task-button"]').click();
+    cy.get('[data-cy="notification"]').should("have.class", "show");
+    cy.get('[data-cy="notification"]').should(
+      "contain",
+      "Task marked as completed!"
+    );
+    cy.get('[data-cy="task-item"]').should("have.class", "task-item completed");
+  });
+});
+
+describe("Delete a task", () => {
+  it("Deletes the task after confirmation", () => {
+    cy.visit("http://127.0.0.1:8080/task-tracker.html");
+
+    // Login
+    cy.get('[data-cy="username-input"]').type("DDD");
+    cy.get('[data-cy="password-input"]').type("DDD");
+    cy.get('[data-cy="login-button"]').click();
+
+    // Add a task
+    cy.get('[data-cy="task-title-input"]').type("Test Task");
+    cy.get('[data-cy="task-description-input"]').type("Test");
+    cy.get('[data-cy="task-priority-select"]').select("Medium");
+    cy.get('[data-cy="task-due-date-input"]').type("2025-06-15");
+    cy.get('[data-cy="add-task-button"]').click();
+
+    // Handle confirm before click
+    cy.on("window:confirm", (text) => {
+      expect(text).to.equal("Are you sure you want to delete this task?");
+      return true;
     });
 
-    it("Shows empty task state", () => {
-      cy.get('[data-cy="empty-state"]').should("exist").and("contain", "No tasks found");
-    });
+    // Delete the task
+    cy.get('[data-cy="delete-task-button"]').click();
 
-    it("Adds a new task and displays it", () => {
-      cy.addTask('Test Task','Test','Medium','2025-06-15');
-    });
+    // Confirm notification and task removal
+    cy.get('[data-cy="notification"]').should("have.class", "show");
+    cy.get('[data-cy="notification"]').should(
+      "contain",
+      "Task deleted successfully!"
+    );
+    cy.get('[data-cy="empty-state"]').should("be.visible");
+  });
+});
 
-    it("Marks a task as completed", () => {
+describe("Add multiple tasks and check ordering", () => {
+  it("Add several tasks and verify order", () => {
+    cy.visit("http://127.0.0.1:8080/task-tracker.html");
 
-      cy.addTask('Test Task','Test','Medium','2025-06-15');
+    // Login
+    cy.get('[data-cy="username-input"]').type("DDD");
+    cy.get('[data-cy="password-input"]').type("DDD");
+    cy.get('[data-cy="login-button"]').click();
 
-      cy.get('[data-cy="toggle-task-button"]').click();
-      cy.get('[data-cy="notification"]').should("have.class", "show").and("contain", "Task marked as completed!");
-      cy.get('[data-cy="task-item"]').should("have.class", "task-item completed");
-    });
+    // Add a task 1
+    cy.get('[data-cy="task-title-input"]').type("Test Task 1");
+    cy.get('[data-cy="task-description-input"]').type("Test 1");
+    cy.get('[data-cy="task-priority-select"]').select("Medium");
+    cy.get('[data-cy="task-due-date-input"]').type("2025-06-15");
+    cy.get('[data-cy="add-task-button"]').click();
+    cy.get('[data-cy="task-title-input"]').should("have.value", "");
+    cy.get('[data-cy="task-description-input"]').should("have.value", "");
 
-    it("Deletes a task after confirmation", () => {
+    // Add a task 2
+    cy.get('[data-cy="task-title-input"]').type("Test Task 2");
+    cy.get('[data-cy="task-description-input"]').type("Test 2");
+    cy.get('[data-cy="task-priority-select"]').select("Low");
+    cy.get('[data-cy="task-due-date-input"]').type("2025-06-15");
+    cy.get('[data-cy="add-task-button"]').click();
+    cy.get('[data-cy="task-title-input"]').should("have.value", "");
+    cy.get('[data-cy="task-description-input"]').should("have.value", "");
 
-      cy.addTask('Test Task','Test','Medium','2025-06-15');
+    // Add a task 3
+    cy.get('[data-cy="task-title-input"]').type("Test Task 3");
+    cy.get('[data-cy="task-description-input"]').type("Test 3");
+    cy.get('[data-cy="task-priority-select"]').select("High");
+    cy.get('[data-cy="task-due-date-input"]').type("2025-06-15");
+    cy.get('[data-cy="add-task-button"]').click();
+    cy.get('[data-cy="task-title-input"]').should("have.value", "");
+    cy.get('[data-cy="task-description-input"]').should("have.value", "");
 
-      cy.on("window:confirm", (text) => {
-        expect(text).to.equal("Are you sure you want to delete this task?");
-        return true;
-      });
-
-      cy.get('[data-cy="delete-task-button"]').click();
-      cy.get('[data-cy="notification"]').should("have.class", "show").and("contain", "Task deleted successfully!");
-      cy.get('[data-cy="empty-state"]').should("be.visible");
-    });
-
-    it("Adds multiple tasks and checks order", () => {
-      const tasks = [
-        { title: "Test Task 1", desc: "Test 1", priority: "Medium" },
-        { title: "Test Task 2", desc: "Test 2", priority: "Low" },
-        { title: "Test Task 3", desc: "Test 3", priority: "High" },
-      ];
-
-      cy.addTask('Test Task 1','Test 1','Medium','2025-06-16');
-      cy.addTask('Test Task 2','Test 2','Low','2025-06-17');
-      cy.addTask('Test Task 3','Test 3','High','2025-06-15');
-
-      cy.get('[data-cy="task-item"]').eq(0).should("contain", "Test Task 3");
-      cy.get('[data-cy="task-item"]').eq(1).should("contain", "Test Task 2");
-      cy.get('[data-cy="task-item"]').eq(2).should("contain", "Test Task 1");
-    });
+    // verify order
+    cy.get('[data-cy="task-item"]').eq(0).should("contain", "Test Task 3");
+    cy.get('[data-cy="task-item"]').eq(1).should("contain", "Test Task 2");
+    cy.get('[data-cy="task-item"]').eq(2).should("contain", "Test Task 1");
   });
 });
