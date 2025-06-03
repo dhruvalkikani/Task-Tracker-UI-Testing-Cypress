@@ -11,20 +11,18 @@
             --success-color: #10b981;
             --warning-color: #f59e0b;
             --danger-color: #ef4444;
+            --info-color: #3b82f6;
             --gray-100: #f3f4f6;
             --gray-200: #e5e7eb;
             --gray-300: #d1d5db;
             --gray-500: #6b7280;
+            --gray-600: #4b5563;
             --gray-700: #374151;
             --gray-800: #1f2937;
             --gray-900: #111827;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -33,476 +31,152 @@
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-        /* Header */
         .header {
-            background: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: white; padding: 1rem 2rem; border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2rem;
+            display: flex; justify-content: space-between; align-items: center;
         }
+        .header h1 { color: var(--primary-color); font-size: 1.8rem; }
+        .user-section { display: flex; align-items: center; gap: 1rem; }
 
-        .header h1 {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-        }
-
-        .user-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        /* Authentication */
         .auth-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            max-width: 400px;
-            margin: 2rem auto;
+            background: white; padding: 2rem; border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 400px; margin: 2rem auto;
         }
+        .auth-form h2 { margin-bottom: 1.5rem; text-align: center; color: var(--gray-800); }
 
-        .auth-form h2 {
-            margin-bottom: 1.5rem;
-            text-align: center;
-            color: var(--gray-800);
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--gray-700); }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 0.75rem; border: 1px solid var(--gray-300);
+            border-radius: 4px; font-size: 1rem; transition: border-color 0.2s;
         }
-
-        /* Forms */
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--gray-700);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--gray-300);
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: border-color 0.2s;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
+        .form-group.error input, .form-group.error select, .form-group.error textarea { border-color: var(--danger-color); }
+        .error-message { color: var(--danger-color); font-size: 0.875rem; margin-top: 0.25rem; }
 
-        .form-group.error input,
-        .form-group.error select,
-        .form-group.error textarea {
-            border-color: var(--danger-color);
-        }
-
-        .error-message {
-            color: var(--danger-color);
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-        }
-
-        /* Buttons */
         .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
+            padding: 0.75rem 1.5rem; border: none; border-radius: 4px; font-size: 1rem;
+            cursor: pointer; transition: all 0.2s; display: inline-flex;
+            align-items: center; gap: 0.5rem; text-decoration: none;
         }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { background-color: var(--primary-hover); }
+        .btn-success { background-color: var(--success-color); color: white; }
+        .btn-warning { background-color: var(--warning-color); color: white; }
+        .btn-danger { background-color: var(--danger-color); color: white; }
+        .btn-secondary { background-color: var(--gray-500); color: white; }
+        .btn-info { background-color: var(--info-color); color: white; }
+        .btn-sm { padding: 0.5rem 1rem; font-size: 0.875rem; }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .btn-success {
-            background-color: var(--success-color);
-            color: white;
-        }
-
-        .btn-warning {
-            background-color: var(--warning-color);
-            color: white;
-        }
-
-        .btn-danger {
-            background-color: var(--danger-color);
-            color: white;
-        }
-
-        .btn-secondary {
-            background-color: var(--gray-500);
-            color: white;
-        }
-
-        .btn-sm {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-        }
-
-        /* Task Form */
         .task-form-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+            background: white; padding: 2rem; border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2rem;
         }
+        .task-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; align-items: end; }
 
-        .task-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            align-items: end;
-        }
-
-        /* Filters */
         .filters-section {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+            background: white; padding: 1.5rem; border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2rem;
         }
+        .filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end; margin-bottom: 1rem; }
+        .filter-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-        .filters {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            align-items: end;
-            margin-bottom: 1rem;
-        }
-
-        .filter-actions {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        /* Task List */
-        .tasks-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .tasks-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .tasks-stats {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.875rem;
-            color: var(--gray-500);
-        }
+        .tasks-section { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .tasks-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .tasks-stats { display: flex; gap: 1rem; font-size: 0.875rem; color: var(--gray-500); }
 
         .task-item {
-            border: 1px solid var(--gray-200);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            transition: all 0.2s;
-            position: relative;
+            border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.5rem;
+            margin-bottom: 1rem; transition: all 0.2s; position: relative;
         }
+        .task-item:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-1px); }
+        .task-item.completed { opacity: 0.7; background-color: var(--gray-100); }
+        .task-item.completed .task-title { text-decoration: line-through; }
+        .task-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .task-title { font-size: 1.25rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; }
+        .task-description { color: var(--gray-600); margin-bottom: 1rem; }
+        .task-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+        .task-priority { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; }
+        .priority-high { background-color: var(--danger-color); color: white; }
+        .priority-medium { background-color: var(--warning-color); color: white; }
+        .priority-low { background-color: var(--success-color); color: white; }
+        .task-due-date { font-size: 0.875rem; color: var(--gray-500); }
+        .task-due-date.overdue { color: var(--danger-color); font-weight: 500; }
+        .task-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
-        .task-item:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transform: translateY(-1px);
-        }
-
-        .task-item.completed {
-            opacity: 0.7;
-            background-color: var(--gray-100);
-        }
-
-        .task-item.completed .task-title {
-            text-decoration: line-through;
-        }
-
-        .task-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .task-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 0.5rem;
-        }
-
-        .task-description {
-            color: var(--gray-600);
-            margin-bottom: 1rem;
-        }
-
-        .task-meta {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .task-priority {
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
-        .priority-high {
-            background-color: var(--danger-color);
-            color: white;
-        }
-
-        .priority-medium {
-            background-color: var(--warning-color);
-            color: white;
-        }
-
-        .priority-low {
-            background-color: var(--success-color);
-            color: white;
-        }
-
-        .task-due-date {
-            font-size: 0.875rem;
-            color: var(--gray-500);
-        }
-
-        .task-due-date.overdue {
-            color: var(--danger-color);
-            font-weight: 500;
-        }
-
-        .task-actions {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        /* Modal */
         .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); z-index: 1000;
         }
-
-        .modal.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
+        .modal.show { display: flex; align-items: center; justify-content: center; }
         .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
+            background: white; padding: 2rem; border-radius: 8px; max-width: 600px; /* Increased max-width for modals */
+            width: 90%; max-height: 90vh; overflow-y: auto;
         }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .modal-title { font-size: 1.5rem; font-weight: 600; color: var(--gray-800); }
+        .modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray-500); }
 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--gray-800);
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--gray-500);
-        }
-
-        /* Notifications */
         .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 1rem 1.5rem;
-            border-radius: 4px;
-            color: white;
-            font-weight: 500;
-            z-index: 1100;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.3s;
+            position: fixed; top: 20px; right: 20px; padding: 1rem 1.5rem;
+            border-radius: 4px; color: white; font-weight: 500; z-index: 1100;
+            opacity: 0; transform: translateX(100%); transition: all 0.3s ease-in-out;
         }
+        .notification.show { opacity: 1; transform: translateX(0); }
+        .notification.success { background-color: var(--success-color); }
+        .notification.error { background-color: var(--danger-color); }
+        .notification.warning { background-color: var(--warning-color); }
+        .notification.info { background-color: var(--info-color); }
 
-        .notification.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
 
-        .notification.success {
-            background-color: var(--success-color);
-        }
-
-        .notification.error {
-            background-color: var(--danger-color);
-        }
-
-        .notification.warning {
-            background-color: var(--warning-color);
-        }
-
-        /* Loading */
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-            color: var(--gray-500);
-        }
-
-        .loading.show {
-            display: block;
-        }
-
+        .loading { display: none; text-align: center; padding: 2rem; color: var(--gray-500); }
+        .loading.show { display: block; }
         .spinner {
-            border: 4px solid var(--gray-200);
-            border-top: 4px solid var(--primary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
+            border: 4px solid var(--gray-200); border-top: 4px solid var(--primary-color);
+            border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;
             margin: 0 auto 1rem;
         }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        .empty-state { text-align: center; padding: 3rem; color: var(--gray-500); }
+        .empty-state img { width: 120px; height: 120px; margin-bottom: 1rem; opacity: 0.5; }
+        .hidden { display: none !important; }
 
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 3rem;
-            color: var(--gray-500);
-        }
+        .instruction-text { font-size: 0.875em; color: var(--gray-600); margin-top: 0.5rem; line-height: 1.5; }
+        .instruction-text code { background-color: var(--gray-200); padding: 0.2em 0.4em; border-radius: 3px; font-family: 'Courier New', Courier, monospace; font-size: 0.9em;}
+        pre { background: #f4f4f4; padding: 1em; border-radius: 6px; overflow-x: auto; border: 1px solid var(--gray-300); font-size: 0.85em; line-height: 1.6; margin-top: 0.5rem; margin-bottom: 1rem; }
+        .modal-content h4 { color: var(--primary-color); margin-top: 1rem; margin-bottom: 0.5rem; }
+        .modal-content h4:first-child { margin-top: 0; }
+        .modal-content ul, .modal-content ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .modal-content li { margin-bottom: 0.5rem; }
+        .form-control-sm { padding: 0.5rem 0.75rem; font-size: 0.9rem; border: 1px solid var(--gray-300); border-radius: 4px; }
+        #cypressLearningHub .btn-sm { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+        #cypressLearningHub h2 { display: flex; align-items: center; gap: 0.5rem; color: var(--primary-color); margin-bottom: 1rem; }
 
-        .empty-state img {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-
-            .header {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-
-            .task-form {
-                grid-template-columns: 1fr;
-            }
-
-            .filters {
-                grid-template-columns: 1fr;
-            }
-
-            .task-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .task-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-
-            .task-actions {
-                width: 100%;
-                justify-content: center;
-            }
+            .container { padding: 10px; }
+            .header { flex-direction: column; gap: 1rem; text-align: center; }
+            .task-form, .filters { grid-template-columns: 1fr; }
+            .task-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .task-meta { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .task-actions { width: 100%; justify-content: center; }
         }
-
         @media (max-width: 480px) {
-            .modal-content {
-                padding: 1rem;
-                width: 95%;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .task-actions .btn {
-                width: auto;
-            }
-        }
-
-        /* Hidden class for testing */
-        .hidden {
-            display: none !important;
+            .modal-content { padding: 1.5rem; width: 95%; } /* Adjusted padding */
+            .btn { width: 100%; justify-content: center; }
+            .task-actions .btn { width: auto; }
+            #cypressLearningHub .btn-sm, .filter-actions .btn-sm { width: 100%; } /* Make hub buttons full width on small screens */
         }
     </style>
 </head>
 <body>
-    <!-- Authentication Section -->
     <div id="authSection" data-cy="auth-section">
         <div class="auth-form">
             <h2 data-cy="auth-title">Login to Task Tracker</h2>
@@ -517,29 +191,64 @@
                     <input type="password" id="password" name="password" data-cy="password-input" required>
                     <div class="error-message" data-cy="password-error"></div>
                 </div>
-                <button type="submit" class="btn btn-primary" data-cy="login-button" style="width: 100%;">
-                    Login
-                </button>
+                <button type="submit" class="btn btn-primary" data-cy="login-button" style="width: 100%;">Login</button>
             </form>
             <p style="margin-top: 1rem; text-align: center; color: var(--gray-500); font-size: 0.875rem;">
-                Use any username and password to login
+                Use username & password (min 3 chars each) to login. Session is saved in localStorage.
             </p>
         </div>
     </div>
 
-    <!-- Main App Section -->
     <div id="appSection" class="hidden" data-cy="app-section">
         <div class="container">
-            <!-- Header -->
             <header class="header" data-cy="header">
                 <h1 data-cy="app-title">Cypress Learning Task Tracker</h1>
                 <div class="user-section">
                     <span data-cy="welcome-message">Welcome, <span id="currentUser" data-cy="current-user"></span></span>
-                    <button class="btn btn-secondary btn-sm" data-cy="logout-button">Logout</button>
+                    <button id="logoutButton" class="btn btn-secondary btn-sm" data-cy="logout-button">Logout</button>
                 </div>
             </header>
 
-            <!-- Task Form Section -->
+            <section id="cypressLearningHub" style="background: #eef2ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <h2>🎓 Cypress Learning Hub</h2>
+                <p style="margin-bottom: 1rem;">This tracker incorporates demos of key Cypress concepts. Explore them below:</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+                    <button id="loadFixtureDataButton" class="btn btn-info btn-sm">Load Fixture Data</button>
+                    <button id="showCiCdInfoButton" class="btn btn-info btn-sm">CI/CD & <code>cypress run</code></button>
+                    <button id="showTestReportInfoButton" class="btn btn-info btn-sm">Test Reporting</button>
+                </div>
+
+                <div class="api-mock-controls" style="margin-top:1rem; padding:1rem; background: white; border-radius: 8px; border: 1px solid var(--gray-200);">
+                    <h4 style="color: var(--gray-700); margin-bottom: 0.5rem;">Simulate API Behavior (<code>cy.intercept()</code> Demo)</h4>
+                    <div class="form-group" style="margin-bottom: 0.5rem;">
+                        <label for="apiMockScenario" style="font-weight:normal;">API Response Scenario:</label>
+                        <select id="apiMockScenario" name="apiMockScenario" data-cy="api-mock-scenario-select" class="form-control-sm">
+                            <option value="normal">Normal (Successful & Fast)</option>
+                            <option value="slow">Slow Response (e.g., 2 secs)</option>
+                            <option value="error500">Server Error (500)</option>
+                            <option value="error400">Client Error (400 - Validation)</option>
+                            <option value="offline">Offline (Network Error)</option>
+                        </select>
+                    </div>
+                    <p class="instruction-text">
+                        Try adding/editing tasks after changing this. In Cypress, you'd use <code>cy.intercept()</code> to stub API responses like these.
+                        For example: <code>cy.intercept('POST', '/api/tasks', { statusCode: 500, body: { message: 'Server Error!' } }).as('createTaskError');</code>
+                    </p>
+                </div>
+
+                <div id="localStorageInfo" style="margin-top:1rem; padding:1rem; background: white; border-radius: 8px; border: 1px solid var(--gray-200);">
+                     <h4 style="color: var(--gray-700); margin-bottom: 0.5rem;">💾 Session & Data Persistence (<code>localStorage</code> Demo)</h4>
+                     <p class="instruction-text">
+                        Your login session (username) and tasks are saved in your browser's <code>localStorage</code>.
+                        Try logging in, adding tasks, then refreshing the page. Your data should persist. <br/>
+                        In Cypress, you can manage <code>localStorage</code> using commands like: <br/>
+                        <code>cy.clearLocalStorage('taskTrackerData')</code> - Clears specific item. <br/>
+                        <code>cy.window().then((win) => win.localStorage.setItem('myKey', 'myValue'))</code> - Sets an item. <br/>
+                        This is crucial for setting up initial application states for tests or verifying data persistence.
+                     </p>
+                </div>
+            </section>
+
             <section class="task-form-section" data-cy="task-form-section">
                 <h2>Add New Task</h2>
                 <form id="taskForm" class="task-form" data-cy="task-form">
@@ -555,9 +264,7 @@
                     <div class="form-group">
                         <label for="taskPriority">Priority</label>
                         <select id="taskPriority" name="priority" data-cy="task-priority-select">
-                            <option value="low">Low</option>
-                            <option value="medium" selected>Medium</option>
-                            <option value="high">High</option>
+                            <option value="low">Low</option> <option value="medium" selected>Medium</option> <option value="high">High</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -566,55 +273,25 @@
                         <div class="error-message" data-cy="task-due-date-error"></div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary" data-cy="add-task-button">
-                            Add Task
-                        </button>
+                        <button type="submit" class="btn btn-primary" data-cy="add-task-button">Add Task</button>
                     </div>
                 </form>
             </section>
 
-            <!-- Filters Section -->
             <section class="filters-section" data-cy="filters-section">
                 <h3>Filters & Search</h3>
                 <div class="filters">
-                    <div class="form-group">
-                        <label for="searchQuery">Search Tasks</label>
-                        <input type="text" id="searchQuery" placeholder="Search by title or description..." data-cy="search-input">
-                    </div>
-                    <div class="form-group">
-                        <label for="filterStatus">Filter by Status</label>
-                        <select id="filterStatus" data-cy="filter-status-select">
-                            <option value="all">All Tasks</option>
-                            <option value="pending">Pending</option>
-                            <option value="completed">Completed</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="filterPriority">Filter by Priority</label>
-                        <select id="filterPriority" data-cy="filter-priority-select">
-                            <option value="all">All Priorities</option>
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="sortBy">Sort By</label>
-                        <select id="sortBy" data-cy="sort-by-select">
-                            <option value="created">Date Created</option>
-                            <option value="dueDate">Due Date</option>
-                            <option value="priority">Priority</option>
-                            <option value="title">Title</option>
-                        </select>
-                    </div>
+                    <div class="form-group"><label for="searchQuery">Search Tasks</label><input type="text" id="searchQuery" placeholder="Search by title or description..." data-cy="search-input"></div>
+                    <div class="form-group"><label for="filterStatus">Filter by Status</label><select id="filterStatus" data-cy="filter-status-select"><option value="all">All Tasks</option><option value="pending">Pending</option><option value="completed">Completed</option></select></div>
+                    <div class="form-group"><label for="filterPriority">Filter by Priority</label><select id="filterPriority" data-cy="filter-priority-select"><option value="all">All Priorities</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div>
+                    <div class="form-group"><label for="sortBy">Sort By</label><select id="sortBy" data-cy="sort-by-select"><option value="created">Date Created</option><option value="dueDate">Due Date</option><option value="priority">Priority</option><option value="title">Title</option></select></div>
                 </div>
                 <div class="filter-actions">
-                    <button class="btn btn-secondary btn-sm" data-cy="clear-filters-button">Clear Filters</button>
-                    <button class="btn btn-danger btn-sm" data-cy="clear-completed-button">Clear Completed</button>
+                    <button id="clearFiltersButton" class="btn btn-secondary btn-sm" data-cy="clear-filters-button">Clear Filters</button>
+                    <button id="clearCompletedButton" class="btn btn-danger btn-sm" data-cy="clear-completed-button">Clear Completed</button>
                 </div>
             </section>
 
-            <!-- Tasks Section -->
             <section class="tasks-section" data-cy="tasks-section">
                 <div class="tasks-header">
                     <h3>Tasks</h3>
@@ -624,461 +301,411 @@
                         <span data-cy="completed-tasks">Completed: <span id="completedTasks">0</span></span>
                     </div>
                 </div>
-
-                <!-- Loading State -->
-                <div class="loading" data-cy="loading-state">
-                    <div class="spinner"></div>
-                    <p>Loading tasks...</p>
-                </div>
-
-                <!-- Empty State -->
-                <div class="empty-state hidden" data-cy="empty-state">
-                    <div style="font-size: 4rem; margin-bottom: 1rem;">📝</div>
-                    <h3>No tasks found</h3>
-                    <p>Add your first task to get started!</p>
-                </div>
-
-                <!-- Tasks List -->
-                <div id="tasksList" data-cy="tasks-list">
-                    <!-- Tasks will be rendered here -->
-                </div>
+                <div class="loading" data-cy="loading-state"><div class="spinner"></div><p>Loading tasks...</p></div>
+                <div class="empty-state hidden" data-cy="empty-state"><div style="font-size: 4rem; margin-bottom: 1rem;">📝</div><h3>No tasks found</h3><p>Add your first task or load sample data to get started!</p></div>
+                <div id="tasksList" data-cy="tasks-list"></div>
             </section>
         </div>
     </div>
 
-    <!-- Edit Task Modal -->
     <div id="editTaskModal" class="modal" data-cy="edit-task-modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" data-cy="edit-modal-title">Edit Task</h3>
-                <button class="modal-close" data-cy="edit-modal-close">&times;</button>
-            </div>
+            <div class="modal-header"><h3 class="modal-title" data-cy="edit-modal-title">Edit Task</h3><button id="editModalCloseButton" class="modal-close" data-cy="edit-modal-close">&times;</button></div>
             <form id="editTaskForm" data-cy="edit-task-form">
-                <div class="form-group">
-                    <label for="editTaskTitle">Task Title *</label>
-                    <input type="text" id="editTaskTitle" name="title" data-cy="edit-task-title-input" required>
-                    <div class="error-message" data-cy="edit-task-title-error"></div>
-                </div>
-                <div class="form-group">
-                    <label for="editTaskDescription">Description</label>
-                    <textarea id="editTaskDescription" name="description" rows="3" data-cy="edit-task-description-input"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="editTaskPriority">Priority</label>
-                    <select id="editTaskPriority" name="priority" data-cy="edit-task-priority-select">
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="editTaskDueDate">Due Date</label>
-                    <input type="date" id="editTaskDueDate" name="dueDate" data-cy="edit-task-due-date-input">
-                    <div class="error-message" data-cy="edit-task-due-date-error"></div>
-                </div>
+                <div class="form-group"><label for="editTaskTitle">Task Title *</label><input type="text" id="editTaskTitle" name="title" data-cy="edit-task-title-input" required><div class="error-message" data-cy="edit-task-title-error"></div></div>
+                <div class="form-group"><label for="editTaskDescription">Description</label><textarea id="editTaskDescription" name="description" rows="3" data-cy="edit-task-description-input"></textarea></div>
+                <div class="form-group"><label for="editTaskPriority">Priority</label><select id="editTaskPriority" name="priority" data-cy="edit-task-priority-select"><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select></div>
+                <div class="form-group"><label for="editTaskDueDate">Due Date</label><input type="date" id="editTaskDueDate" name="dueDate" data-cy="edit-task-due-date-input"><div class="error-message" data-cy="edit-task-due-date-error"></div></div>
                 <div class="form-group" style="display: flex; gap: 1rem; justify-content: flex-end;">
-                    <button type="button" class="btn btn-secondary" data-cy="edit-modal-cancel">Cancel</button>
+                    <button type="button" id="editModalCancelButton" class="btn btn-secondary" data-cy="edit-modal-cancel">Cancel</button>
                     <button type="submit" class="btn btn-primary" data-cy="edit-modal-save">Save Changes</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Notification -->
-    <div id="notification" class="notification" data-cy="notification">
-        <span id="notificationMessage" data-cy="notification-message"></span>
+    <div id="ciCdInfoModal" class="modal" data-cy="ci-cd-info-modal">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title">CI/CD Integration & <code>cypress run</code></h3><button class="modal-close" data-modal-close-button="ciCdInfoModal">&times;</button></div>
+            <h4>Running Cypress in CI/CD Pipelines</h4>
+            <p>Cypress tests are designed for CI/CD. The command <code>npx cypress run</code> executes tests headlessly (no browser UI) and is ideal for automation.</p>
+            <h5>Key Options for <code>cypress run</code>:</h5>
+            <ul>
+                <li><code>--browser &lt;name&gt;</code>: Specify browser (e.g., <code>chrome</code>, <code>firefox</code>, <code>edge</code>).</li>
+                <li><code>--spec &lt;path&gt;</code>: Run specific test files.</li>
+                <li><code>--record --key &lt;key&gt;</code>: Record to Cypress Dashboard (requires project setup).</li>
+            </ul>
+            <h5>Example: GitHub Actions (<code>.github/workflows/cypress.yml</code>)</h5>
+            <pre><code>name: Cypress Tests
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm start # Your app's start command
+          wait-on: 'http://localhost:3000' # URL to wait for
+          # record: true # Uncomment to record to Cypress Dashboard
+        # env:
+          # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+</code></pre>
+            <h5>Example: GitLab CI (<code>.gitlab-ci.yml</code>)</h5>
+            <pre><code>stages: [test]
+e2e_tests:
+  stage: test
+  image: cypress/browsers:node-lts-chrome118 # Official Cypress image
+  script:
+    - npm ci
+    # - npm run start & # Start app in background if needed
+    # - npx wait-on http://localhost:3000
+    - npx cypress run # Add --record --key YOUR_KEY for Dashboard
+  artifacts:
+    when: always
+    paths: [cypress/screenshots/, cypress/videos/]
+    expire_in: 1 week
+</code></pre>
+            <p class="instruction-text">These examples use official actions/images to simplify setup. Ensure your CI environment has Node.js and can serve your application.</p>
+            <div class="form-group" style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+                 <button type="button" class="btn btn-secondary" data-modal-close-button="ciCdInfoModal">Close</button>
+            </div>
+        </div>
     </div>
+
+    <div id="testReportInfoModal" class="modal" data-cy="test-report-info-modal">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title">Generating Test Reports with Cypress</h3><button class="modal-close" data-modal-close-button="testReportInfoModal">&times;</button></div>
+            <h4>Why Test Reports?</h4>
+            <p>Reports offer a clear view of test results, track quality, identify failures, and analyze trends.</p>
+            <h4>1. Mochawesome Reporter</h4>
+            <p>Generates standalone HTML reports for local review or CI artifacts.</p>
+            <h5>Setup:</h5>
+            <ol>
+                <li>Install: <code>npm i --save-dev cypress-mochawesome-reporter mochawesome mochawesome-merge mochawesome-report-generator</code></li>
+                <li>Configure in <code>cypress.config.js</code> (or <code>.ts</code>):
+                    <pre><code>const { defineConfig } = require('cypress');
+module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true, reportPageTitle: 'App Test Report',
+    embeddedScreenshots: true, inlineAssets: true,
+  },
+  e2e: {
+    setupNodeEvents(on, config) {
+      require('cypress-mochawesome-reporter/plugin')(on);
+    },
+  },
+});</code></pre>
+                </li>
+                <li>Import in <code>cypress/support/e2e.js</code>: <code>import 'cypress-mochawesome-reporter/register';</code></li>
+            </ol>
+            <p>Reports are usually in <code>cypress/reports/html/index.html</code> after <code>npx cypress run</code>.</p>
+            <img src="https://user-images.githubusercontent.com/19490308/114840702-985a3580-9dd2-11eb-9060-ce5a099a050a.png" alt="Mochawesome Report Example" style="width:100%; max-width:450px; border:1px solid #ccc; margin-top:10px; border-radius:4px;">
+            <p style="font-size:0.8em; text-align:center; color: var(--gray-500);">(Example of a Mochawesome report)</p>
+
+            <h4>2. Cypress Dashboard</h4>
+            <p>A paid service for advanced features like recordings, parallelization, and flaky test management.</p>
+            <h5>Setup:</h5>
+            <ol>
+                <li>Set up a project on <a href="https://dashboard.cypress.io/" target="_blank" rel="noopener noreferrer">Cypress Dashboard</a> to get a <code>projectId</code> and record key.</li>
+                <li>Add <code>projectId: "your-id"</code> to <code>cypress.config.js</code>.</li>
+                <li>Run with: <code>npx cypress run --record --key YOUR_RECORD_KEY</code></li>
+            </ol>
+            <p>The Dashboard excels at identifying <strong>flaky tests</strong> (tests that pass/fail inconsistently).</p>
+            <img src="https://docs.cypress.io/img/guides/dashboard/flaky-test-management/flaky-badge-in-app.png" alt="Cypress Dashboard Flaky Test Example" style="width:100%; max-width:450px; border:1px solid #ccc; margin-top:10px; border-radius:4px;">
+            <p style="font-size:0.8em; text-align:center; color: var(--gray-500);">(Example from Cypress Dashboard)</p>
+            <div class="form-group" style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+                 <button type="button" class="btn btn-secondary" data-modal-close-button="testReportInfoModal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification" data-cy="notification"><span id="notificationMessage" data-cy="notification-message"></span></div>
 
     <script>
         // Application State
         let currentUser = null;
         let tasks = [];
         let editingTaskId = null;
-        let filters = {
-            search: '',
-            status: 'all',
-            priority: 'all',
-            sortBy: 'created'
-        };
+        let filters = { search: '', status: 'all', priority: 'all', sortBy: 'created' };
+        let currentApiMockScenario = 'normal';
 
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeApp();
-        });
+        document.addEventListener('DOMContentLoaded', initializeApp);
 
         function initializeApp() {
-            // Load saved data
             loadData();
-            
-            // Setup event listeners
             setupEventListeners();
-            
-            // Check authentication
-            if (currentUser) {
-                showApp();
-            } else {
-                showAuth();
-            }
+            if (currentUser) showApp(); else showAuth();
         }
 
         function setupEventListeners() {
-            // Authentication
             document.getElementById('loginForm').addEventListener('submit', handleLogin);
-            document.querySelector('[data-cy="logout-button"]').addEventListener('click', handleLogout);
-
-            // Task form
+            document.getElementById('logoutButton').addEventListener('click', handleLogout);
             document.getElementById('taskForm').addEventListener('submit', handleAddTask);
-
-            // Edit task modal
-            document.querySelector('[data-cy="edit-modal-close"]').addEventListener('click', closeEditModal);
-            document.querySelector('[data-cy="edit-modal-cancel"]').addEventListener('click', closeEditModal);
+            document.getElementById('editModalCloseButton').addEventListener('click', closeEditModal);
+            document.getElementById('editModalCancelButton').addEventListener('click', closeEditModal);
             document.getElementById('editTaskForm').addEventListener('submit', handleEditTask);
-
-            // Filters
             document.getElementById('searchQuery').addEventListener('input', debounce(handleFilterChange, 300));
             document.getElementById('filterStatus').addEventListener('change', handleFilterChange);
             document.getElementById('filterPriority').addEventListener('change', handleFilterChange);
             document.getElementById('sortBy').addEventListener('change', handleFilterChange);
-            document.querySelector('[data-cy="clear-filters-button"]').addEventListener('click', clearFilters);
-            document.querySelector('[data-cy="clear-completed-button"]').addEventListener('click', clearCompletedTasks);
+            document.getElementById('clearFiltersButton').addEventListener('click', clearFilters);
+            document.getElementById('clearCompletedButton').addEventListener('click', clearCompletedTasks);
 
-            // Modal background click
-            document.getElementById('editTaskModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeEditModal();
-                }
+            // Learning Hub Listeners
+            document.getElementById('loadFixtureDataButton').addEventListener('click', handleLoadFixtureData);
+            document.getElementById('showCiCdInfoButton').addEventListener('click', () => openGenericModal('ciCdInfoModal'));
+            document.getElementById('showTestReportInfoButton').addEventListener('click', () => openGenericModal('testReportInfoModal'));
+            
+            const apiMockSelector = document.getElementById('apiMockScenario');
+            if (apiMockSelector) {
+                apiMockSelector.addEventListener('change', (event) => {
+                    currentApiMockScenario = event.target.value;
+                    saveData();
+                    showNotification(`API mock: ${event.target.options[event.target.selectedIndex].text}`, 'info', 2500);
+                });
+            }
+
+            document.querySelectorAll('[data-modal-close-button]').forEach(btn => {
+                btn.addEventListener('click', () => closeGenericModal(btn.dataset.modalCloseButton));
             });
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) { if (e.target === this) closeGenericModal(this.id); });
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') document.querySelectorAll('.modal.show').forEach(m => closeGenericModal(m.id));
+            });
+        }
 
-            // Keyboard shortcuts
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeEditModal();
+        // --- API Call Simulation ---
+        async function simulateApiCall(operationName, { successDelay = 200, slowDelay = 2000, errorPayload = {} } = {}) {
+            showLoading();
+            return new Promise(async (resolve, reject) => {
+                let effectiveDelay = currentApiMockScenario === 'slow' ? slowDelay : successDelay;
+                if (currentApiMockScenario === 'slow') {
+                    showNotification(`Simulating SLOW API for ${operationName}...`, 'warning', effectiveDelay + 300);
+                }
+                await delay(effectiveDelay);
+
+                switch (currentApiMockScenario) {
+                    case 'error500':
+                        hideLoading();
+                        showNotification(`Mocked 500 Server Error for ${operationName}!`, 'error');
+                        reject({ type: 'server', message: 'Internal Server Error', operation: operationName });
+                        break;
+                    case 'error400':
+                        hideLoading();
+                        showNotification(`Mocked 400 Client Error for ${operationName}.`, 'error');
+                        reject({ type: 'client', message: errorPayload.message || 'Bad Request / Validation Error', data: errorPayload, operation: operationName });
+                        break;
+                    case 'offline':
+                        hideLoading();
+                        showNotification(`Mocked Offline/Network Error for ${operationName}!`, 'error');
+                        reject({ type: 'network', message: 'Network request failed', operation: operationName });
+                        break;
+                    default: // 'normal' or 'slow' (delay handled, now resolve)
+                        hideLoading();
+                        resolve({ success: true, operation: operationName });
+                        break;
                 }
             });
         }
 
-        // Authentication Functions
+        // --- Authentication ---
         async function handleLogin(e) {
             e.preventDefault();
             const formData = new FormData(e.target);
             const username = formData.get('username').trim();
             const password = formData.get('password').trim();
-
-            // Clear previous errors
             clearFormErrors('loginForm');
+            let hasClientErrors = false;
+            if (!username) { showFieldError('username', 'Username is required'); hasClientErrors = true; }
+            if (!password) { showFieldError('password', 'Password is required'); hasClientErrors = true; }
+            if (hasClientErrors) return;
 
-            // Validate
-            let hasErrors = false;
-            if (!username) {
-                showFieldError('username', 'Username is required');
-                hasErrors = true;
-            }
-            if (!password) {
-                showFieldError('password', 'Password is required');
-                hasErrors = true;
-            }
-
-            if (hasErrors) return;
-
-            // Simulate API call
-            showLoading();
-            await delay(1000);
-            hideLoading();
-
-            // Simulate authentication (accept any non-empty credentials)
-            if (username.length >= 3 && password.length >= 3) {
-                currentUser = username;
-                saveData();
-                showNotification('Login successful!', 'success');
-                showApp();
-            } else {
-                showFieldError('username', 'Username must be at least 3 characters');
-                showFieldError('password', 'Password must be at least 3 characters');
+            try {
+                await simulateApiCall('login', { errorPayload: { general: "Invalid credentials mock" } });
+                if (username.length >= 3 && password.length >= 3) {
+                    currentUser = username;
+                    saveData();
+                    showNotification('Login successful!', 'success');
+                    showApp();
+                } else {
+                    showFieldError('username', 'Username/Password incorrect (min 3 chars for demo).');
+                }
+            } catch (error) {
+                console.error(`API Mock Error (Login):`, error);
+                // Notification handled by simulateApiCall, can show field specific if error.data exists
+                if (error.type === 'client') showFieldError('username', error.message);
             }
         }
-
         function handleLogout() {
-            currentUser = null;
-            tasks = [];
-            saveData();
+            currentUser = null; tasks = []; filters = { search: '', status: 'all', priority: 'all', sortBy: 'created' };
+            currentApiMockScenario = 'normal'; // Reset mock scenario on logout
+            saveData(); // This will effectively clear most of the user-specific data
+            localStorage.removeItem('taskTrackerData'); // More explicit clear for this app
             showNotification('Logged out successfully!', 'success');
             showAuth();
         }
 
-        // Task Management Functions
+        // --- Task Management ---
         async function handleAddTask(e) {
             e.preventDefault();
             const formData = new FormData(e.target);
-            
-            // Clear previous errors
             clearFormErrors('taskForm');
-
-            // Validate
             const title = formData.get('title').trim();
             const description = formData.get('description').trim();
             const priority = formData.get('priority');
             const dueDate = formData.get('dueDate');
 
-            let hasErrors = false;
-            if (!title) {
-                showFieldError('taskTitle', 'Task title is required');
-                hasErrors = true;
-            } else if (title.length < 3) {
-                showFieldError('taskTitle', 'Task title must be at least 3 characters');
-                hasErrors = true;
-            }
+            let clientErrors = false;
+            if (!title) { showFieldError('taskTitle', 'Task title is required'); clientErrors = true; }
+            else if (title.length < 3) { showFieldError('taskTitle', 'Title must be at least 3 chars'); clientErrors = true; }
+            if (dueDate && new Date(dueDate) < new Date().setHours(0,0,0,0)) { showFieldError('taskDueDate', 'Due date cannot be past'); clientErrors = true;}
+            if (clientErrors) return;
 
-            if (dueDate && new Date(dueDate) < new Date().setHours(0,0,0,0)) {
-                showFieldError('taskDueDate', 'Due date cannot be in the past');
-                hasErrors = true;
-            }
-
-            if (hasErrors) return;
-
-            // Create task
-            const task = {
-                id: Date.now().toString(),
-                title,
-                description,
-                priority,
-                dueDate,
-                completed: false,
-                createdAt: new Date().toISOString()
-            };
-
-            // Simulate API call
-            showLoading();
-            await delay(800);
-            hideLoading();
-
-            tasks.unshift(task);
-            saveData();
-            renderTasks();
-            updateTaskStats();
-            
-            // Reset form
-            e.target.reset();
-            document.getElementById('taskPriority').value = 'medium';
-            
-            showNotification('Task added successfully!', 'success');
+            try {
+                await simulateApiCall('addTask', { errorPayload: { title: "Invalid task title (mock)" } });
+                const task = { id: Date.now().toString(), title, description, priority, dueDate, completed: false, createdAt: new Date().toISOString() };
+                tasks.unshift(task);
+                saveData(); renderTasks(); updateTaskStats();
+                e.target.reset(); document.getElementById('taskPriority').value = 'medium';
+                showNotification('Task added!', 'success');
+            } catch (error) { console.error('API Mock Error (AddTask):', error); if (error.data && error.data.title) showFieldError('taskTitle', error.data.title); }
         }
 
         async function handleEditTask(e) {
             e.preventDefault();
             const formData = new FormData(e.target);
-            
-            // Clear previous errors
             clearFormErrors('editTaskForm');
-
-            // Validate
             const title = formData.get('title').trim();
             const description = formData.get('description').trim();
             const priority = formData.get('priority');
             const dueDate = formData.get('dueDate');
 
-            let hasErrors = false;
-            if (!title) {
-                showFieldError('editTaskTitle', 'Task title is required');
-                hasErrors = true;
-            } else if (title.length < 3) {
-                showFieldError('editTaskTitle', 'Task title must be at least 3 characters');
-                hasErrors = true;
+            let clientErrors = false;
+            if (!title) { showFieldError('editTaskTitle', 'Task title is required'); clientErrors = true; }
+            else if (title.length < 3) { showFieldError('editTaskTitle', 'Title must be at least 3 chars'); clientErrors = true; }
+            if (dueDate && new Date(dueDate) < new Date().setHours(0,0,0,0) && !tasks.find(t => t.id === editingTaskId)?.completed ) {
+                 // Allow past due date for already completed tasks if editing, but not for active tasks or new past dates.
+                 const originalTask = tasks.find(t => t.id === editingTaskId);
+                 if (!originalTask || new Date(dueDate).toISOString().split('T')[0] !== new Date(originalTask.dueDate).toISOString().split('T')[0]) {
+                    showFieldError('editTaskDueDate', 'Due date cannot be past for pending tasks'); clientErrors = true;
+                 }
             }
-
-            if (dueDate && new Date(dueDate) < new Date().setHours(0,0,0,0)) {
-                showFieldError('editTaskDueDate', 'Due date cannot be in the past');
-                hasErrors = true;
-            }
-
-            if (hasErrors) return;
-
-            // Update task
+            if (clientErrors) return;
+            
             const taskIndex = tasks.findIndex(t => t.id === editingTaskId);
-            if (taskIndex !== -1) {
-                // Simulate API call
-                showLoading();
-                await delay(600);
-                hideLoading();
+            if (taskIndex === -1) return;
 
-                tasks[taskIndex] = {
-                    ...tasks[taskIndex],
-                    title,
-                    description,
-                    priority,
-                    dueDate,
-                    updatedAt: new Date().toISOString()
-                };
-
-                saveData();
-                renderTasks();
-                updateTaskStats();
-                closeEditModal();
-                showNotification('Task updated successfully!', 'success');
-            }
+            try {
+                await simulateApiCall('editTask', { errorPayload: { title: "Invalid task title (mock)" } });
+                tasks[taskIndex] = { ...tasks[taskIndex], title, description, priority, dueDate, updatedAt: new Date().toISOString() };
+                saveData(); renderTasks(); updateTaskStats(); closeEditModal();
+                showNotification('Task updated!', 'success');
+            } catch (error) { console.error('API Mock Error (EditTask):', error); if (error.data && error.data.title) showFieldError('editTaskTitle', error.data.title); }
         }
 
         async function toggleTask(taskId) {
             const taskIndex = tasks.findIndex(t => t.id === taskId);
-            if (taskIndex !== -1) {
-                // Simulate API call
-                showLoading();
-                await delay(400);
-                hideLoading();
-
+            if (taskIndex === -1) return;
+            try {
+                await simulateApiCall('toggleTaskStatus');
                 tasks[taskIndex].completed = !tasks[taskIndex].completed;
                 tasks[taskIndex].updatedAt = new Date().toISOString();
-                
-                saveData();
-                renderTasks();
-                updateTaskStats();
-                
-                const status = tasks[taskIndex].completed ? 'completed' : 'pending';
-                showNotification(`Task marked as ${status}!`, 'success');
-            }
+                saveData(); renderTasks(); updateTaskStats();
+                showNotification(`Task marked ${tasks[taskIndex].completed ? 'complete' : 'pending'}!`, 'success');
+            } catch (error) { console.error('API Mock Error (ToggleTask):', error); }
         }
 
         async function deleteTask(taskId) {
-            if (confirm('Are you sure you want to delete this task?')) {
-                // Simulate API call
-                showLoading();
-                await delay(500);
-                hideLoading();
-
+            if (!confirm('Are you sure you want to delete this task?')) return;
+            try {
+                await simulateApiCall('deleteTask');
                 tasks = tasks.filter(t => t.id !== taskId);
-                
-                saveData();
-                renderTasks();
-                updateTaskStats();
-                showNotification('Task deleted successfully!', 'success');
-            }
+                saveData(); renderTasks(); updateTaskStats();
+                showNotification('Task deleted!', 'success');
+            } catch (error) { console.error('API Mock Error (DeleteTask):', error); }
         }
-
+        
         function openEditModal(taskId) {
             const task = tasks.find(t => t.id === taskId);
-            if (task) {
-                editingTaskId = taskId;
-                
-                // Populate form
-                document.getElementById('editTaskTitle').value = task.title;
-                document.getElementById('editTaskDescription').value = task.description || '';
-                document.getElementById('editTaskPriority').value = task.priority;
-                document.getElementById('editTaskDueDate').value = task.dueDate || '';
-                
-                // Clear errors
-                clearFormErrors('editTaskForm');
-                
-                // Show modal
-                document.getElementById('editTaskModal').classList.add('show');
-            }
+            if (!task) return;
+            editingTaskId = taskId;
+            document.getElementById('editTaskTitle').value = task.title;
+            document.getElementById('editTaskDescription').value = task.description || '';
+            document.getElementById('editTaskPriority').value = task.priority;
+            document.getElementById('editTaskDueDate').value = task.dueDate || '';
+            clearFormErrors('editTaskForm');
+            openGenericModal('editTaskModal');
         }
-
-        function closeEditModal() {
-            document.getElementById('editTaskModal').classList.remove('show');
-            editingTaskId = null;
-        }
+        function closeEditModal() { closeGenericModal('editTaskModal'); editingTaskId = null; }
 
         async function clearCompletedTasks() {
             const completedCount = tasks.filter(t => t.completed).length;
-            if (completedCount === 0) {
-                showNotification('No completed tasks to clear!', 'warning');
-                return;
-            }
-
-            if (confirm(`Are you sure you want to delete ${completedCount} completed task(s)?`)) {
-                // Simulate API call
-                showLoading();
-                await delay(700);
-                hideLoading();
-
+            if (completedCount === 0) { showNotification('No completed tasks to clear.', 'warning'); return; }
+            if (!confirm(`Delete ${completedCount} completed task(s)?`)) return;
+            try {
+                await simulateApiCall('clearCompletedTasks');
                 tasks = tasks.filter(t => !t.completed);
-                saveData();
-                renderTasks();
-                updateTaskStats();
-                showNotification(`${completedCount} completed task(s) deleted!`, 'success');
-            }
+                saveData(); renderTasks(); updateTaskStats();
+                showNotification(`${completedCount} completed task(s) cleared!`, 'success');
+            } catch (error) { console.error('API Mock Error (ClearCompleted):', error); }
         }
 
-        // Filter and Search Functions
+        // --- Filters & Sorting ---
         function handleFilterChange() {
             filters.search = document.getElementById('searchQuery').value.toLowerCase();
             filters.status = document.getElementById('filterStatus').value;
             filters.priority = document.getElementById('filterPriority').value;
             filters.sortBy = document.getElementById('sortBy').value;
-            
             renderTasks();
         }
-
         function clearFilters() {
             document.getElementById('searchQuery').value = '';
             document.getElementById('filterStatus').value = 'all';
             document.getElementById('filterPriority').value = 'all';
             document.getElementById('sortBy').value = 'created';
-            
-            handleFilterChange();
-            showNotification('Filters cleared!', 'success');
+            handleFilterChange(); showNotification('Filters cleared!', 'success');
         }
-
         function getFilteredAndSortedTasks() {
-            let filteredTasks = tasks.filter(task => {
-                // Search filter
-                if (filters.search) {
-                    const searchMatch = 
-                        task.title.toLowerCase().includes(filters.search) ||
-                        (task.description && task.description.toLowerCase().includes(filters.search));
-                    if (!searchMatch) return false;
-                }
-
-                // Status filter
+            let filtered = tasks.filter(task => {
+                if (filters.search && !(task.title.toLowerCase().includes(filters.search) || (task.description && task.description.toLowerCase().includes(filters.search)))) return false;
                 if (filters.status === 'completed' && !task.completed) return false;
                 if (filters.status === 'pending' && task.completed) return false;
-
-                // Priority filter
                 if (filters.priority !== 'all' && task.priority !== filters.priority) return false;
-
                 return true;
             });
-
-            // Sort tasks
-            filteredTasks.sort((a, b) => {
-                switch (filters.sortBy) {
-                    case 'title':
-                        return a.title.localeCompare(b.title);
-                    case 'priority':
-                        const priorityOrder = { high: 3, medium: 2, low: 1 };
-                        return priorityOrder[b.priority] - priorityOrder[a.priority];
-                    case 'dueDate':
-                        if (!a.dueDate && !b.dueDate) return 0;
-                        if (!a.dueDate) return 1;
-                        if (!b.dueDate) return -1;
-                        return new Date(a.dueDate) - new Date(b.dueDate);
-                    case 'created':
-                    default:
-                        return new Date(b.createdAt) - new Date(a.createdAt);
+            filtered.sort((a, b) => {
+                if (filters.sortBy === 'title') return a.title.localeCompare(b.title);
+                if (filters.sortBy === 'priority') return ({ high:3, medium:2, low:1 })[b.priority] - ({ high:3, medium:2, low:1 })[a.priority];
+                if (filters.sortBy === 'dueDate') {
+                    if (!a.dueDate) return 1; if (!b.dueDate) return -1;
+                    return new Date(a.dueDate) - new Date(b.dueDate);
                 }
+                return new Date(b.createdAt) - new Date(a.createdAt); // Default 'created'
             });
-
-            return filteredTasks;
+            return filtered;
         }
 
-        // Rendering Functions
+        // --- Rendering ---
         function renderTasks() {
-            const tasksList = document.getElementById('tasksList');
-            const emptyState = document.querySelector('[data-cy="empty-state"]');
-            const filteredTasks = getFilteredAndSortedTasks();
+            const tasksListEl = document.getElementById('tasksList');
+            const emptyStateEl = document.querySelector('[data-cy="empty-state"]');
+            const filteredAndSortedTasks = getFilteredAndSortedTasks();
 
-            if (filteredTasks.length === 0) {
-                tasksList.innerHTML = '';
-                emptyState.classList.remove('hidden');
-                return;
-            }
-
-            emptyState.classList.add('hidden');
-            
-            tasksList.innerHTML = filteredTasks.map(task => {
-                const isOverdue = task.dueDate && !task.completed && new Date(task.dueDate) < new Date();
-                const dueDateText = task.dueDate ? formatDate(task.dueDate) : 'No due date';
-                
-                return `
+            if (filteredAndSortedTasks.length === 0) {
+                tasksListEl.innerHTML = '';
+                emptyStateEl.classList.remove('hidden');
+            } else {
+                emptyStateEl.classList.add('hidden');
+                tasksListEl.innerHTML = filteredAndSortedTasks.map(task => {
+                    const isOverdue = task.dueDate && !task.completed && new Date(task.dueDate) < new Date().setHours(0,0,0,0);
+                    const dueDateText = task.dueDate ? formatDate(task.dueDate) : 'No due date';
+                    return `
                     <div class="task-item ${task.completed ? 'completed' : ''}" data-cy="task-item" data-task-id="${task.id}">
                         <div class="task-header">
                             <div>
@@ -1086,271 +713,150 @@
                                 ${task.description ? `<p class="task-description" data-cy="task-description">${escapeHtml(task.description)}</p>` : ''}
                             </div>
                         </div>
-                        
                         <div class="task-meta">
-                            <span class="task-priority priority-${task.priority}" data-cy="task-priority">
-                                ${task.priority}
-                            </span>
-                            <span class="task-due-date ${isOverdue ? 'overdue' : ''}" data-cy="task-due-date">
-                                📅 ${dueDateText}
-                            </span>
-                            <span class="task-created" data-cy="task-created">
-                                Created: ${formatDateTime(task.createdAt)}
-                            </span>
+                            <span class="task-priority priority-${task.priority}" data-cy="task-priority">${task.priority}</span>
+                            <span class="task-due-date ${isOverdue ? 'overdue' : ''}" data-cy="task-due-date">📅 ${dueDateText}</span>
+                            <span class="task-created" data-cy="task-created">Created: ${formatDateTime(task.createdAt)}</span>
                         </div>
-                        
                         <div class="task-actions">
-                            <button class="btn btn-sm ${task.completed ? 'btn-warning' : 'btn-success'}" 
-                                    onclick="toggleTask('${task.id}')" 
-                                    data-cy="toggle-task-button">
-                                ${task.completed ? 'Mark Pending' : 'Mark Complete'}
-                            </button>
-                            <button class="btn btn-sm btn-primary" 
-                                    onclick="openEditModal('${task.id}')" 
-                                    data-cy="edit-task-button">
-                                Edit
-                            </button>
-                            <button class="btn btn-sm btn-danger" 
-                                    onclick="deleteTask('${task.id}')" 
-                                    data-cy="delete-task-button">
-                                Delete
-                            </button>
+                            <button class="btn btn-sm ${task.completed ? 'btn-warning' : 'btn-success'}" onclick="toggleTask('${task.id}')" data-cy="toggle-task-button">${task.completed ? 'Mark Pending' : 'Mark Complete'}</button>
+                            <button class="btn btn-sm btn-primary" onclick="openEditModal('${task.id}')" data-cy="edit-task-button">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteTask('${task.id}')" data-cy="delete-task-button">Delete</button>
                         </div>
-                    </div>
-                `;
-            }).join('');
+                    </div>`;
+                }).join('');
+            }
         }
-
         function updateTaskStats() {
-            const total = tasks.length;
-            const completed = tasks.filter(t => t.completed).length;
-            const pending = total - completed;
-
-            document.getElementById('totalTasks').textContent = total;
-            document.getElementById('completedTasks').textContent = completed;
-            document.getElementById('pendingTasks').textContent = pending;
+            document.getElementById('totalTasks').textContent = tasks.length;
+            document.getElementById('completedTasks').textContent = tasks.filter(t => t.completed).length;
+            document.getElementById('pendingTasks').textContent = tasks.length - tasks.filter(t => t.completed).length;
         }
 
-        // UI Helper Functions
+        // --- UI Helpers ---
         function showAuth() {
             document.getElementById('authSection').classList.remove('hidden');
             document.getElementById('appSection').classList.add('hidden');
-            
-            // Clear form
-            document.getElementById('loginForm').reset();
-            clearFormErrors('loginForm');
+            document.getElementById('loginForm').reset(); clearFormErrors('loginForm');
         }
-
         function showApp() {
             document.getElementById('authSection').classList.add('hidden');
             document.getElementById('appSection').classList.remove('hidden');
-            
-            // Update UI
             document.getElementById('currentUser').textContent = currentUser;
-            renderTasks();
-            updateTaskStats();
+            renderTasks(); updateTaskStats();
         }
-
-        function showLoading() {
-            document.querySelector('[data-cy="loading-state"]').classList.add('show');
+        function showLoading() { document.querySelector('[data-cy="loading-state"]').classList.add('show'); }
+        function hideLoading() { document.querySelector('[data-cy="loading-state"]').classList.remove('show'); }
+        function showNotification(message, type = 'success', duration = 3000) {
+            const el = document.getElementById('notification');
+            document.getElementById('notificationMessage').textContent = message;
+            el.className = `notification ${type}`;
+            el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), duration);
         }
-
-        function hideLoading() {
-            document.querySelector('[data-cy="loading-state"]').classList.remove('show');
-        }
-
-        function showNotification(message, type = 'success') {
-            const notification = document.getElementById('notification');
-            const messageEl = document.getElementById('notificationMessage');
-            
-            messageEl.textContent = message;
-            notification.className = `notification ${type}`;
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
         function showFieldError(fieldName, message) {
             const field = document.querySelector(`[name="${fieldName}"], #${fieldName}`);
-            const formGroup = field.closest('.form-group');
-            const errorEl = formGroup.querySelector('.error-message');
-            
-            formGroup.classList.add('error');
-            errorEl.textContent = message;
+            const group = field.closest('.form-group');
+            const errEl = group.querySelector('.error-message');
+            group.classList.add('error'); if (errEl) errEl.textContent = message;
         }
-
         function clearFormErrors(formId) {
             const form = document.getElementById(formId);
-            const errorGroups = form.querySelectorAll('.form-group.error');
-            const errorMessages = form.querySelectorAll('.error-message');
-            
-            errorGroups.forEach(group => group.classList.remove('error'));
-            errorMessages.forEach(msg => msg.textContent = '');
+            form.querySelectorAll('.form-group.error').forEach(g => g.classList.remove('error'));
+            form.querySelectorAll('.error-message').forEach(m => m.textContent = '');
         }
+        function openGenericModal(modalId) { const m = document.getElementById(modalId); if(m) m.classList.add('show'); }
+        function closeGenericModal(modalId) { const m = document.getElementById(modalId); if(m) m.classList.remove('show'); if (modalId === 'editTaskModal') editingTaskId = null;}
 
-        // Utility Functions
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-            });
-        }
 
-        function formatDateTime(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-        }
+        // --- Utilities ---
+        function formatDate(dateStr) { return new Date(dateStr).toLocaleDateString('en-CA'); } // YYYY-MM-DD for consistency
+        function formatDateTime(dateStr) { return new Date(dateStr).toLocaleString('en-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'});}
+        function escapeHtml(text) { const d=document.createElement('div'); d.textContent=text; return d.innerHTML; }
+        function debounce(fn,wait){let t;return function(...a){clearTimeout(t);t=setTimeout(()=>fn.apply(this,a),wait);};}
+        function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        function delay(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
-        // Data Persistence Functions
+        // --- Data Persistence (localStorage) ---
         function saveData() {
-            const data = {
-                currentUser,
-                tasks,
-                filters
-            };
-            // Note: In a real app, this would be localStorage
-            // For Cypress testing, we keep it in memory
-            window.appData = data;
+            const data = { currentUser, tasks, filters, apiMockScenario: currentApiMockScenario };
+            localStorage.setItem('taskTrackerData', JSON.stringify(data));
         }
-
         function loadData() {
-            const data = window.appData || {};
+            const saved = localStorage.getItem('taskTrackerData');
+            const data = saved ? JSON.parse(saved) : {};
             currentUser = data.currentUser || null;
             tasks = data.tasks || [];
-            filters = data.filters || {
-                search: '',
-                status: 'all',
-                priority: 'all',
-                sortBy: 'created'
-            };
+            filters = data.filters || { search: '', status: 'all', priority: 'all', sortBy: 'created' };
+            currentApiMockScenario = data.apiMockScenario || 'normal';
+            
+            const apiMockSelector = document.getElementById('apiMockScenario'); // Update dropdown on load
+            if (apiMockSelector) apiMockSelector.value = currentApiMockScenario;
         }
 
-        // Sample Data for Testing (can be triggered via console)
-        window.loadSampleData = function() {
-            if (!currentUser) {
-                console.log('Please log in first');
-                return;
-            }
-
-            const sampleTasks = [
-                {
-                    id: '1',
-                    title: 'Complete Cypress Testing Course',
-                    description: 'Learn end-to-end testing with Cypress framework',
-                    priority: 'high',
-                    dueDate: '2025-06-15',
-                    completed: false,
-                    createdAt: '2025-05-20T10:00:00.000Z'
-                },
-                {
-                    id: '2',
-                    title: 'Write Unit Tests',
-                    description: 'Create comprehensive unit tests for the application',
-                    priority: 'medium',
-                    dueDate: '2025-06-01',
-                    completed: true,
-                    createdAt: '2025-05-18T14:30:00.000Z'
-                },
-                {
-                    id: '3',
-                    title: 'Code Review',
-                    description: 'Review pull requests from team members',
-                    priority: 'medium',
-                    dueDate: '',
-                    completed: false,
-                    createdAt: '2025-05-25T09:15:00.000Z'
-                },
-                {
-                    id: '4',
-                    title: 'Update Documentation',
-                    description: 'Update API documentation with latest changes',
-                    priority: 'low',
-                    dueDate: '2025-05-30',
-                    completed: false,
-                    createdAt: '2025-05-22T16:45:00.000Z'
-                },
-                {
-                    id: '5',
-                    title: 'Deploy to Production',
-                    description: 'Deploy the latest version to production environment',
-                    priority: 'high',
-                    dueDate: '2025-05-29',
-                    completed: false,
-                    createdAt: '2025-05-27T11:20:00.000Z'
-                }
+        // --- Learning Feature Handlers ---
+        function handleLoadFixtureData() {
+            if (!currentUser) { showNotification('Please log in to load fixture data.', 'warning'); return; }
+            const fixtureTasks = [
+                { id: 'fix-001', title: 'Master cy.fixture()', description: 'Load this task from a conceptual fixture.', priority: 'high', dueDate: '2025-12-01', completed: false, createdAt: new Date(Date.now() - 5*86400000).toISOString() },
+                { id: 'fix-002', title: 'Understand API Mocking', description: 'Practice with cy.intercept() by changing API scenarios.', priority: 'medium', dueDate: '2025-11-15', completed: true, createdAt: new Date(Date.now() - 10*86400000).toISOString()},
+                { id: 'fix-003', title: 'Explore localStorage', description: 'See how session and tasks persist.', priority: 'low', dueDate: '', completed: false, createdAt: new Date(Date.now() - 2*86400000).toISOString() }
             ];
-
-            tasks = sampleTasks;
-            saveData();
-            renderTasks();
-            updateTaskStats();
-            showNotification('Sample data loaded!', 'success');
-            console.log('Sample data loaded successfully');
-        };
-
-        // Expose functions for Cypress testing
+            tasks = [...fixtureTasks, ...tasks.filter(t => !fixtureTasks.find(ft => ft.id === t.id))]; // Add or replace
+            saveData(); renderTasks(); updateTaskStats();
+            showNotification('Fixture data loaded! Explore the new tasks.', 'success');
+            console.log('Fixture data loaded. In Cypress: cy.fixture(\'myTasks.json\').then(data => { /* use it */ });');
+        }
+        
+        // --- Cypress Test Helpers (exposed on window) ---
         window.cypressHelpers = {
             getCurrentUser: () => currentUser,
             getTasks: () => tasks,
             getFilters: () => filters,
-            clearAllData: () => {
-                currentUser = null;
-                tasks = [];
-                filters = {
-                    search: '',
-                    status: 'all',
-                    priority: 'all',
-                    sortBy: 'created'
-                };
+            getApiMockScenario: () => currentApiMockScenario,
+            setApiMockScenario: (scenario) => {
+                currentApiMockScenario = scenario;
+                const selector = document.getElementById('apiMockScenario');
+                if(selector) selector.value = scenario;
                 saveData();
+                console.log(`CYPRESS HELPER: API Mock Scenario set to ${scenario}`);
             },
-            addSampleTask: (taskData) => {
+            clearAllData: () => {
+                currentUser = null; tasks = [];
+                filters = { search: '', status: 'all', priority: 'all', sortBy: 'created' };
+                currentApiMockScenario = 'normal';
+                localStorage.removeItem('taskTrackerData');
+                if (document.getElementById('appSection') && !document.getElementById('appSection').classList.contains('hidden')) {
+                    renderTasks(); updateTaskStats();
+                    const selector = document.getElementById('apiMockScenario');
+                    if(selector) selector.value = 'normal';
+                }
+                console.log('CYPRESS HELPER: All app data cleared.');
+            },
+            addSampleTask: (taskData) => { // For more direct task injection by tests
                 const task = {
-                    id: Date.now().toString(),
-                    title: taskData.title || 'Sample Task',
+                    id: taskData.id || Date.now().toString(),
+                    title: taskData.title || 'Cypress Added Task',
                     description: taskData.description || '',
                     priority: taskData.priority || 'medium',
                     dueDate: taskData.dueDate || '',
-                    completed: false,
-                    createdAt: new Date().toISOString(),
-                    ...taskData
+                    completed: taskData.completed || false,
+                    createdAt: taskData.createdAt || new Date().toISOString(),
                 };
-                tasks.unshift(task);
-                saveData();
-                renderTasks();
-                updateTaskStats();
+                tasks.unshift(task); saveData();
+                if (currentUser && document.getElementById('appSection') && !document.getElementById('appSection').classList.contains('hidden')) {
+                     renderTasks(); updateTaskStats();
+                }
+                console.log(`CYPRESS HELPER: Task "${task.title}" added.`);
                 return task;
+            },
+            loadTasksDirectly: (newTasksArray) => { // Replaces all tasks
+                if (!Array.isArray(newTasksArray)) { console.error('loadTasksDirectly expects an array.'); return; }
+                tasks = newTasksArray;
+                saveData();
+                if (currentUser && document.getElementById('appSection') && !document.getElementById('appSection').classList.contains('hidden')) {
+                     renderTasks(); updateTaskStats();
+                }
+                console.log(`CYPRESS HELPER: ${newTasksArray.length} tasks loaded directly.`);
             }
         };
     </script>
