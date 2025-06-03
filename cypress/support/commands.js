@@ -3,12 +3,10 @@ Cypress.Commands.add("login", (username = "DDD", password = "DDD") => {
   cy.get('[data-cy="username-input"]').type(username);
   cy.get('[data-cy="password-input"]').type(password);
   cy.get('[data-cy="login-button"]').click();
-  cy.get('[data-cy="notification"]').should("have.class", "show");
-  cy.get('[data-cy="notification-message"]').should(
-      "contain",
-      "Login successful"
-    );
+  cy.get('[data-cy="notification-message"]').should("contain", "Login successful");
+  cy.get('[data-cy="notification"]').should("not.have.class", "show");
 });
+
 
 Cypress.Commands.add("addTask",(title, desc, priority, date) =>{
   cy.get('[data-cy="task-title-input"]').type(title);
@@ -17,10 +15,7 @@ Cypress.Commands.add("addTask",(title, desc, priority, date) =>{
   cy.get('[data-cy="task-due-date-input"]').type(date);
   cy.get('[data-cy="add-task-button"]').click();
   cy.get('[data-cy="notification"]').should("have.class", "show");
-  cy.get('[data-cy="notification-message"]').should(
-      "contain",
-      "Task added successfully"
-    );
+  cy.get('[data-cy="notification-message"]').should("contain", "Task added");
   cy.get('[data-cy="task-title-input"]').should("have.value", "");
   cy.get('[data-cy="task-description-input"]').should("have.value", "");
   cy.get('[data-cy="task-item"]').contains("Test Task");

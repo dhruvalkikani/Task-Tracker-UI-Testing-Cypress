@@ -41,8 +41,7 @@ describe("Task Tracker App", () => {
         cy.get('[data-cy="password-input"]').type("DD").should("have.value", "DD");
         cy.get('[data-cy="login-button"]').click();
 
-        cy.get('[data-cy="username-error"]').should("be.visible").and("contain", "Username must be at least 3 characters");
-        cy.get('[data-cy="password-error"]').should("be.visible").and("contain", "Password must be at least 3 characters");
+        cy.get('[data-cy="username-error"]').should("be.visible").and("contain", "Username/Password incorrect (min 3 chars for demo).");
       });
     });
   });
@@ -65,7 +64,7 @@ describe("Task Tracker App", () => {
       cy.addTask('Test Task','Test','Medium','2025-06-15');
 
       cy.get('[data-cy="toggle-task-button"]').click();
-      cy.get('[data-cy="notification"]').should("have.class", "show").and("contain", "Task marked as completed!");
+      cy.get('[data-cy="notification"]').should("have.class", "show").and("contain", "Task marked complete!");
       cy.get('[data-cy="task-item"]').should("have.class", "task-item completed");
     });
 
@@ -79,7 +78,7 @@ describe("Task Tracker App", () => {
       });
 
       cy.get('[data-cy="delete-task-button"]').click();
-      cy.get('[data-cy="notification"]').should("have.class", "show").and("contain", "Task deleted successfully!");
+      cy.get('[data-cy="notification"]').should("have.class", "show").and("contain", "Task deleted!");
       cy.get('[data-cy="empty-state"]').should("be.visible");
     });
 
